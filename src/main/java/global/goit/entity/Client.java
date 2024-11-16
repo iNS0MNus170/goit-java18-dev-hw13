@@ -1,10 +1,10 @@
 package global.goit.entity;
 
+
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Set;
 
 @Data
 @Builder
@@ -19,4 +19,8 @@ public class Client {
 
     @Column(nullable = false, length = 200)
     private String name;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private Set<Ticket> tickets;
 }

@@ -1,13 +1,9 @@
 package global.goit.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.Set;
 
 @Data
 @Builder
@@ -22,4 +18,13 @@ public class Planet {
 
     @Column(nullable = false, length = 500)
     private String name;
+
+    @OneToMany(mappedBy = "fromPlanet", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private Set<Ticket> ticketsFrom;
+
+    @OneToMany(mappedBy = "toPlanet", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private Set<Ticket> ticketsTo;
+
 }

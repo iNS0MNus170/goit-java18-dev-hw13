@@ -2,6 +2,7 @@ package global.goit.config;
 
 import global.goit.entity.Client;
 import global.goit.entity.Planet;
+import global.goit.entity.Ticket;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,6 +21,7 @@ public final class HibernateConfig {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Client.class);
         configuration.addAnnotatedClass(Planet.class);
+        configuration.addAnnotatedClass(Ticket.class);
         configuration.setProperty("hibernate.connection.driver_class", HibernateConfigConstants.HB_CONN_DRIVER_CLASS);
         configuration.setProperty("hibernate.connection.url", HibernateConfigConstants.HB_URL);
         configuration.setProperty("hibernate.connection.username", HibernateConfigConstants.HB_USER);
