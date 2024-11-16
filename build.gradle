@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'global.goit'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.6.2.Final'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '10.21.0'
+    runtimeOnly group: 'org.flywaydb', name: 'flyway-database-postgresql', version: '10.21.0'
+}
+
+test {
+    useJUnitPlatform()
+}
